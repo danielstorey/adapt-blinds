@@ -1,7 +1,7 @@
 # adapt-blinds
 
 **Blinds** is a *presentation component* Created by Dan storey.
-<img src="https://raw.githubusercontent.com/danielstorey/adapt-resources/master/blinds-demo.jpg" alt="blinds in action">
+<img align="right" src="https://raw.githubusercontent.com/danielstorey/adapt-resources/master/blinds-demo.jpg" alt="blinds in action">
 
 When a learner hovers on one of the images, it widens and the other images narrow accordingly. If set, then an array of captions will appear. Positions and timings of these can be customised.
 
