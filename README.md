@@ -1,7 +1,7 @@
 # adapt-blinds
 
 **Blinds** is a *presentation component* Created by Dan storey.
-<img src="" alt="blinds in action">
+<img src="https://raw.githubusercontent.com/danielstorey/adapt-resources/master/blinds-demo.jpg" alt="blinds in action">
 
 When a learner hovers on one of the images, it widens and the other images narrow accordingly. If set, then an array of captions will appear. Positions and timings of these can be customised.
 
@@ -12,7 +12,7 @@ When a learner hovers on one of the images, it widens and the other images narro
 
 ## Settings Overview
 
-The attributes listed below are used in *components.json* to configure **Blinds**, and are properly formatted as JSON in [*example.json*](https://github.com/adaptlearning/adapt-contrib-hotgraphic/blob/master/example.json).
+The attributes listed below are used in *components.json* to configure **Blinds**, and are properly formatted as JSON in [*example.json*](https://github.com/danielstorey/adapt-blinds/example.json).
 
 ### Attributes
 
@@ -51,11 +51,11 @@ guide the learner’s interaction with the component.
 
 >>**_text** (string): Each caption must have a **_text** property. This is the text to be displayed inside the caption.
 
->>**top** (mixed): Each caption can contain optional **top**, **left** and **width** values to position them on the image. Values can be given as a number or string. A number will be interpreted as pixels but a string value may be used to specify a percentage (eg. "20%"). Default is 10px. Multiple captions appear 10px below the previous one unless this value is specified.
+>>**top** (mixed): Each caption can contain optional **top**, **left** and **width** values to position them on the image. Values can be given as a number or string. A number will be interpreted as pixels but a string value may be used to specify a percentage (eg. "20%"). Default is 0. Multiple captions appear 10px below the previous one unless this value is specified.
 
->>**left** (mixed): Specify the position of the caption from the left. Value can be given as a number or a string. Default is 10px;
+>>**left** (mixed): Specify the position of the caption from the left. Value can be given as a number or a string. Default is 0;
 
->>**width** (mixed): Specify the width of the caption. Value can be given as a string or a number. Default behaviour is to fit the width of the text
+>>**width** (mixed): Specify the max width of the caption. Value can be given as a string or a number. Default behaviour is to fit the width of the text
 
 ### Accessibility
 

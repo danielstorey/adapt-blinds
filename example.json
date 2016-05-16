@@ -1,0 +1,70 @@
+[
+	{
+		"_id": "c-01",
+		"_parentId": "b-01",
+		"_type": "component",
+		"_component": "blinds",
+		"_classes": "",
+		"_layout": "full",
+		"title": "Blinds",
+		"displayTitle": "Superheroes",
+		"body": "This is an example of Dan's fantastic new adapt-blinds component",
+		"_pageLevelProgress": {
+			"_isEnabled": true
+		},
+		"height": 400,
+		"expandBy":2.8,
+		"_items": [
+			{
+				"_graphic": "batman.jpg",
+				"captions": [
+					{
+						"_text": "It's not who I am underneath, but what I do that defines me."
+					}
+				]
+			},
+			{
+				"_graphic": "spiderman.jpg",
+				"captions": [
+					{
+						"_text": "I'll just be up here..."
+					},
+					{
+						"_text": "...Hanging around"
+					}
+				]
+			},
+			{
+				"_graphic": "superman.jpg",
+				"captions": [
+					{
+						"_text": "Anyone can give up..."
+					},
+					{
+						"_text": "...It's the easiest thing in the world to do...",
+						"top": 100,
+						"left": "60%",
+						"width": "50%"
+					},
+					{
+						"_text": "...But to hold it together when everyone else would understand if you fell apart - that's true strength.",
+						"width": 230
+					}
+				]
+			},
+			{
+				"_graphic": "hulk.jpg",
+				"captions": [
+					{
+						"_text": "Anybody got any paracetamol?"
+					},
+					{
+						"_text": "I've got a really bad headache"
+					}
+				]
+			},			{
+				"_graphic": "captain-america.jpg"
+			}
+		]
+	}
+]
