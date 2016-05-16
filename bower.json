@@ -1,0 +1,16 @@
+{
+  "name": "adapt-blinds",
+  "version": "0.1",
+  "framework": "^2.0.0",
+  "homepage": "",
+  "issues": "",
+  "displayName" : "Blinds",
+  "component" : "text",
+  "description": "A simple core contributed text component",
+  "main": "/js/adapt-blinds.js",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-component"
+  ],
+  "license": "GPLv3"
+}

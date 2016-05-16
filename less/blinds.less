@@ -1,0 +1,43 @@
+@font-face {
+	font-family: "lafayette";
+	src: url(fonts/Laffayette_Comic_Pro.ttf);
+}
+
+.blinds-inner {
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.blinds-item {
+		float: left;
+		position: relative;
+		height: 500px;
+		padding: 10px;
+		margin: 4px;
+		-webkit-background-size: auto 100%;
+		background-size: auto 100%;
+		background-position: center;
+		transition: width 0.4s;
+	}
+
+	.blinds-captions {
+		position: relative;
+	}
+
+	.blinds-item:hover p {
+		transition: opacity 0.4s;
+	}
+
+	.blinds-item p {
+		opacity: 0;
+		position: absolute;
+		margin: 0;
+		padding: 8px;
+		background: #fff;
+		font-family: lafayette, sans-serif;
+		color: #000;
+		border: 2px solid #000;
+	}
+
+}
