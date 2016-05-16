@@ -1,12 +1,12 @@
 {
   "name": "adapt-blinds",
-  "version": "0.1",
+  "version": "1.0",
   "framework": "^2.0.0",
-  "homepage": "",
+  "homepage": "https://github.com/danielstorey/adapt-blinds",
   "issues": "",
   "displayName" : "Blinds",
-  "component" : "text",
-  "description": "A simple core contributed text component",
+  "component" : "blinds",
+  "description": "When a learner hovers over an image, it widens and the other images narrow accordingly. If set, then an array of captions will appear. Positions and timings of these can be customised.",
   "main": "/js/adapt-blinds.js",
   "keywords": [
     "adapt-plugin",
