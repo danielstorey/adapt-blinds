@@ -35,9 +35,9 @@ define(function(require) {
 			var that = this;
 			var $items = this.$(".blinds-item");
 			var _items = this.model.get("_items");
-			var wItem = $items.width();
+			var wItem = this.itemWidth;
 			var animationTime = 400;
-			var animationDelay = 800;
+			var captionDelay = this.model.has("captionDelay") ? this.model.get("captionDelay") : 800;
 			var expandBy = this.model.get("expandBy") || 2;
 			var count = 0;
 			var currentItem;
@@ -56,13 +56,13 @@ define(function(require) {
 					var wSiblingsNew = wItem - ((wItemNew - wItem) / $siblings.length);
 					var currTop = 10;
 
-					$this.width(wItemNew);
+					$this.outerWidth(wItemNew);
 
 					that.setStage(itemIndex);
 
 					$p.each(function(i, el) {
 						(function(i, el) {
-							var t = animationTime + (i * animationDelay);
+							var t = animationTime + (i * captionDelay);
 							var caption = _item.captions[i];
 							var left = caption.left || _item.left || 0;
 							var top = caption.top;
@@ -82,7 +82,7 @@ define(function(require) {
 							}, t);
 						})(i, el);
 					});
-					$siblings.width(wSiblingsNew);
+					$siblings.outerWidth(wSiblingsNew);
 				},
 				mouseleave: function() {
 					for (var i = 0; i < queue.length; i++) {
@@ -91,9 +91,9 @@ define(function(require) {
 					currentItem = null;
 					count = 0;
 					var $this = $(this);
-					$this.width(wItem);
+					$this.outerWidth(wItem);
 					$this.find("p").css("opacity", 0);
-					$this.siblings().width(wItem);
+					$this.siblings().outerWidth(wItem);
 				}
 			});
 
@@ -112,6 +112,7 @@ define(function(require) {
 			var $items = this.$(".blinds-item");
 			var margin = parseInt($items.css("margin"));
 			var wItem = (wTotal / $items.length) - (margin * 2);
+			this.itemWidth = wItem;
 			$items.outerWidth(wItem);
 		},
 
