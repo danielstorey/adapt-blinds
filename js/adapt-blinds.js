@@ -110,7 +110,7 @@ define(function(require) {
 			if (this.model.get("height")) this.$(".blinds-item").height(this.model.get("height"));
 			var wTotal = this.$(".blinds-items").width();
 			var $items = this.$(".blinds-item");
-			var margin = parseInt($items.css("margin"));
+			var margin = parseInt($items.css("marginRight"));
 			var wItem = (wTotal / $items.length) - (margin * 2);
 			this.itemWidth = wItem;
 			$items.outerWidth(wItem);
