@@ -5,6 +5,7 @@
 
 When a learner hovers on one of the images, it widens and the other images narrow accordingly. If set, then an array of captions will appear. Positions and timings of these can be customised.
 
+[**Click here for an interactive demo**](https://danielstorey.github.io/adapt-demo-course/#/id/co-main)
 
 ##Installation
 
