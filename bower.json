@@ -6,7 +6,7 @@
   "issues": "",
   "displayName" : "Blinds",
   "component" : "blinds",
-  "description": "When a learner hovers over an image, it widens and the other images narrow accordingly. If set, then an array of captions will appear. Positions and timings of these can be customised.",
+  "description": "Horizontally stacked images widen when hovered over. Optional captions are displayed. Demo available.",
   "main": "/js/adapt-blinds.js",
   "keywords": [
     "adapt-plugin",
