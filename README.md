@@ -9,7 +9,7 @@ When a learner hovers on one of the images, it widens and the other images narro
 
 ##Installation
 
-
+Run the following from the command line: `adapt install adapt-blinds`
 
 ## Settings Overview
 
