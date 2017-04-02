@@ -1,32 +1,114 @@
 {
-  "type":"object",
-  "$schema": "http://json-schema.org/draft-04/schema",
-  "id": "http://jsonschema.net",
-  "$ref": "http://localhost/plugins/content/component/model.schema",
-  "globals": {
-    "ariaRegion": {
-      "type": "string",
-      "required": true,
-      "default": "",
-      "inputType": "Text",
-      "validators": []
-    }
-  },
-  "properties":{
-    "_supportedLayout": {
-      "type": "string",
-      "required": true,
-      "enum": ["full-width", "half-width", "both"],
-      "default": "both",
-      "editorOnly": true
+    "type":"object",
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "id": "http://jsonschema.net",
+    "$ref": "http://localhost/plugins/content/component/model.schema",
+    "globals": {
+        "ariaRegion": {
+            "type": "string",
+            "required": true,
+            "default": "",
+            "inputType": "Text",
+            "validators": []
+        }
     },
-    "instruction": {
-      "type": "string",
-      "required": false,
-      "default": "",
-      "inputType": "Text",
-      "validators": [],
-      "help": "This is the instruction text"
+    "properties":{
+        "_supportedLayout": {
+            "type": "string",
+            "required": true,
+            "enum": ["full-width", "half-width", "both"],
+            "default": "both",
+            "editorOnly": true
+        },
+        "instruction": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "inputType": "Text",
+            "validators": [],
+            "help": "This is the instruction text"
+        },
+        "_setCompletionOn": {
+            "type":"string",
+            "required":true,
+            "enum": ["inview", "allItems"],
+            "default": "inview",
+            "title": "Set Completion of Narrative on",
+            "inputType": {"type": "Select", "options":["inview", "allItems"]},
+            "validators": ["required"],
+            "help": "This tells Adapt when to set the blinds component to complete"
+        },
+        "_expandBy": {
+            "type": "number",
+            "required": false,
+            "default": 2,
+            "title": "Expand by",
+            "inputType": "Number",
+            "validators": ["number"],
+            "help": "The amount to expand the blind by when hovering over it. Default is 2"
+        },
+        "_items": {
+            "type":"array",
+            "required":false,
+            "title": "Binds items",
+            "items": {
+                "type":"object",
+                "required":false,
+                "properties":{
+                    "src": {
+                        "type":"string",
+                        "required": true,
+                        "default": "",
+                        "title": "Select the image for this item",
+                        "inputType": "Asset:image",
+                        "validators": ["required"],
+                        "help": ""
+                    },
+                    "_captions": {
+                        "type":"array",
+                        "required":false,
+                        "title": "Caption items",
+                        "items": {
+                            "type":"object",
+                            "required":false,
+                            "properties":{
+                                "text": {
+                                    "type":"string",
+                                    "required": true,
+                                    "default": "",
+                                    "title": "Text",
+                                    "inputType": "Text",
+                                    "help": ""
+                                },
+                                "top": {
+                                    "type": "string",
+                                    "required": false,
+                                    "title": "",
+                                    "inputType": "Text",
+                                    "validators": [],
+                                    "help": "The vertical position of the caption. Can be given as a number or percentage."
+                                },
+                                "left": {
+                                    "type": "string",
+                                    "required": false,
+                                    "title": "",
+                                    "inputType": "Text",
+                                    "validators": [],
+                                    "help": "The horizontal position of the caption. Can be given as a number or percentage."
+                                },
+                                "width": {
+                                    "type": "string",
+                                    "required": false,
+                                    "title": "",
+                                    "inputType": "Text",
+                                    "validators": [],
+                                    "help": "The width of the caption. Can be given as a number or percentage."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
 }

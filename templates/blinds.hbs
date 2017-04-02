@@ -4,9 +4,9 @@
 		<div class="blinds-container">
 			<div class="blinds-items clearfix">
 				{{#each _items}}
-					<div class="blinds-item" style="background-image:url('{{backgroundImage}}')">
+					<div class="blinds-item" style="background-image:url('{{src}}')">
 						<div class="blinds-captions">
-							{{#each captions}}
+							{{#each _captions}}
 								<p>{{text}}</p>
 							{{/each}}
 						</div>
