@@ -1,22 +1,17 @@
-define(function(require) {
-
-	var ComponentView = require('coreViews/componentView');
-	var Adapt = require('coreJS/adapt');
+define([
+  "core/js/adapt",
+  "core/js/views/componentView"
+], function(Adapt, ComponentView) {
 
 	var Blinds = ComponentView.extend({
 
 		preRender: function() {
-
-			this.listenTo(Adapt, 'device:resize', this.calculateWidths, this);
+			this.listenTo(Adapt, "device:resize", this.calculateWidths, this);
 			this.setDeviceSize();
-
-			// Checks to see if the text should be reset on revisit
-			this.checkIfResetOnRevisit();
 		},
 
 		postRender: function() {
-			this.setReadyStatus();
-			this.$('.blinds-inner').imageready(_.bind(function() {
+			this.$(".blinds-inner").imageready(_.bind(function() {
 				this.setupBlinds();
 				this.setReadyStatus();
 			}, this));
@@ -24,21 +19,23 @@ define(function(require) {
 		},
 
 		setupBlinds: function() {
-			if(!this.model.has('_items') || !this.model.get('_items').length) return;
-			this.model.set('_itemCount', this.model.get('_items').length);
-			this.model.set('_active', true);
+			if(!this.model.has("_items") || !this.model.get("_items").length) return;
+			this.model.set("_itemCount", this.model.get("_items").length);
+			this.model.set("_active", true);
 			this.calculateWidths();
 			this.setupEventListeners();
 		},
 
 		setupEventListeners: function() {
+			if (!this.model.get("_isDesktop")) return;
+
 			var that = this;
 			var $items = this.$(".blinds-item");
 			var _items = this.model.get("_items");
 			var wItem = this.itemWidth;
 			var animationTime = 400;
 			var captionDelay = this.model.has("captionDelay") ? this.model.get("captionDelay") : 800;
-			var expandBy = this.model.get("expandBy") || 2;
+			var expandBy = this.model.get("_expandBy") || 2;
 			var count = 0;
 			var currentItem;
 			var queue = [];
@@ -46,6 +43,7 @@ define(function(require) {
 			$items.on({
 				mouseenter: function() {
 					currentItem = this;
+
 
 					var $this = $(this);
 					var itemIndex = $this.index();
@@ -63,7 +61,7 @@ define(function(require) {
 					$p.each(function(i, el) {
 						(function(i, el) {
 							var t = animationTime + (i * captionDelay);
-							var caption = _item.captions[i];
+							var caption = _item._captions[i];
 							var left = caption.left || _item.left || 0;
 							var top = caption.top;
 							if (!top && i === 0) top = 0;
@@ -97,12 +95,12 @@ define(function(require) {
 				}
 			});
 
-			this.completionEvent = this.model.get('_setCompletionOn') || 'allItems';
+			this.completionEvent = this.model.get("_setCompletionOn") || "allItems";
 
-			if (this.completionEvent !== 'inview' && this.model.get('_items').length > 1) {
+			if (this.completionEvent !== "inview" && this.model.get("_items").length > 1) {
 				this.on(this.completionEvent, _.bind(this.onCompletion, this));
 			} else {
-				this.$('.component-widget').on('inview', _.bind(this.inview, this));
+				this.$(".component-widget").on("inview", _.bind(this.inview, this));
 			}
 		},
 
@@ -116,19 +114,9 @@ define(function(require) {
 			$items.outerWidth(wItem);
 		},
 
-		// Used to check if the text should reset on revisit
-		checkIfResetOnRevisit: function() {
-			var isResetOnRevisit = this.model.get('_isResetOnRevisit');
-
-			// If reset is enabled set defaults
-			if (isResetOnRevisit) {
-				this.model.reset(isResetOnRevisit);
-			}
-		},
-
 		setStage: function(stage) {
-			this.model.set('_stage', stage);
-			if (this.model.get('_isDesktop')) {
+			this.model.set("_stage", stage);
+			if (this.model.get("_isDesktop")) {
 				// Set the visited attribute for large screen devices
 				var currentItem = this.getCurrentItem(stage);
 				currentItem._isVisited = true;
@@ -138,26 +126,26 @@ define(function(require) {
 		},
 
 		getCurrentItem: function(index) {
-			return this.model.get('_items')[index];
+			return this.model.get("_items")[index];
 		},
 
 		getVisitedItems: function() {
-			return _.filter(this.model.get('_items'), function(item) {
+			return _.filter(this.model.get("_items"), function(item) {
 				return item._isVisited;
 			});
 		},
 
 		evaluateCompletion: function() {
-			if (this.getVisitedItems().length === this.model.get('_items').length) {
-				this.trigger('allItems');
+			if (this.getVisitedItems().length === this.model.get("_items").length) {
+				this.trigger("allItems");
 			}
 		},
 
 		inview: function(event, visible, visiblePartX, visiblePartY) {
 			if (visible) {
-				if (visiblePartY === 'top') {
+				if (visiblePartY === "top") {
 					this._isVisibleTop = true;
-				} else if (visiblePartY === 'bottom') {
+				} else if (visiblePartY === "bottom") {
 					this._isVisibleBottom = true;
 				} else {
 					this._isVisibleTop = true;
@@ -165,7 +153,7 @@ define(function(require) {
 				}
 
 				if (this._isVisibleTop && this._isVisibleBottom) {
-					this.$('.component-inner').off('inview');
+					this.$(".component-inner").off("inview");
 					this.setCompletionStatus();
 				}
 			}
@@ -173,24 +161,23 @@ define(function(require) {
 
 		onCompletion: function() {
 			this.setCompletionStatus();
-			if (this.completionEvent && this.completionEvent != 'inview') {
+			if (this.completionEvent && this.completionEvent != "inview") {
 				this.off(this.completionEvent, this);
 			}
 		},
 
 		setDeviceSize: function() {
-			if (Adapt.device.screenSize === 'large') {
-				this.$el.addClass('desktop').removeClass('mobile');
-				this.model.set('_isDesktop', true);
+			if (Adapt.device.screenSize === "large") {
+				this.$el.addClass("desktop").removeClass("mobile");
+				this.model.set("_isDesktop", true);
 			} else {
-				this.$el.addClass('mobile').removeClass('desktop');
-				this.model.set('_isDesktop', false)
+				this.$el.addClass("mobile").removeClass("desktop");
+				this.model.set("_isDesktop", false)
 			}
 		}
-
 	});
 
-	Adapt.register('blinds', Blinds);
+	Adapt.register("blinds", Blinds);
 
 	return Blinds;
 
