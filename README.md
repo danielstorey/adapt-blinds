@@ -17,8 +17,6 @@ The attributes listed below are used in *components.json* to configure **Blinds*
 
 ### Attributes
 
-[**core model attributes**](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes): These are inherited by every Adapt component. [Read more](https://github.com/adaptlearning/adapt_framework/wiki/Core-model-attributes).
-
 **_component** (string): This value must be: `blinds`. (One word.)
 
 **_setCompletionOn** (string): This value determines when the component registers as complete. Acceptable values are `"allItems"` and `"inview"`. `"allItems"` requires each blind to be visited. `"inview"` requires the **Blinds** component to enter the view port completely.
