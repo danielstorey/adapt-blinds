@@ -51,7 +51,6 @@ define([
             var index = $(e.currentTarget).index();
 
             this.hideCaptions();
-            clearTimeout(this.leaveTimeout);
             clearTimeout(this.enterTimeout);
 
             if (this.isAnimating) {
