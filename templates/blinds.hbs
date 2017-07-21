@@ -1,18 +1,18 @@
 <div class="blinds-inner component-inner">
-	{{> component this}}
-	<div class="blinds-widget component-widget">
-		<div class="blinds-container">
-			<div class="blinds-items clearfix">
-				{{#each _items}}
-					<div class="blinds-item" style="background-image:url('{{src}}')">
-						<div class="blinds-captions">
-							{{#each _captions}}
-								<p>{{text}}</p>
-							{{/each}}
-						</div>
-					</div>
-				{{/each}}
-			</div>
-		</div>
-	</div>
+    {{> component this}}
+    <div class="blinds-widget component-widget">
+        <div class="blinds-container">
+            <div class="blinds-items clearfix">
+                {{#each _items}}<div class="blinds-item">
+                    <div class="blinds-item-inner" style="background-image:url('{{src}}')">
+                        <div class="blinds-captions">
+                            {{#each _captions}}
+                                <div class="blinds-caption">{{text}}</div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>{{/each}}
+            </div>
+        </div>
+    </div>
 </div>

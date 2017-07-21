@@ -1,8 +1,3 @@
-@font-face {
-	font-family: "lafayette";
-	src: url(fonts/Laffayette_Comic_Pro.ttf);
-}
-
 .blinds-inner {
 
 	* {
@@ -14,60 +9,55 @@
 	}
 
 	.blinds-items {
-		width: 120%;
+        overflow: hidden;
+        white-space: nowrap;
 	}
 
 	.blinds-item {
-		float: left;
 		position: relative;
 		height: 500px;
-		padding: 10px;
-		margin: 4px;
-		-webkit-background-size: auto 100%;
-		background-size: auto 100%;
-		background-position: center;
-		background-repeat: no-repeat;
 		-webkit-transition: width 0.4s;
 		-moz-transition: width 0.4s;
 		-ms-transition: width 0.4s;
 		-o-transition: width 0.4s;
 		transition: width 0.4s;
-	}
 
-	.blinds-captions {
-		position: relative;
-	}
+        .blinds-item-inner {
+            height: 100%;
+            padding: 10px;
+            margin: 0 4px;
+            -webkit-background-size: auto 100%;
+            background-size: auto 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-	.blinds-item:hover p {
-		transition: opacity 0.4s;
-	}
+        .blinds-captions {
+            position: relative;
+        }
 
-	.blinds-item p {
-		opacity: 0;
-		position: absolute;
-		margin: 0;
-		padding: 8px;
-		background: #fff;
-		font-family: lafayette, sans-serif;
-		color: #000;
-		border: 2px solid #000;
-	}
-}
+        .blinds-caption {
+            opacity: 0;
+            position: absolute;
+            margin: 0;
+            padding: 8px;
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+            white-space: normal;
+            -webkit-transition: opacity 0.4s;
+            -moz-transition: opacity 0.4s;
+            -ms-transition: opacity 0.4s;
+            -o-transition: opacity 0.4s;
+            transition: opacity 0.4s;
+        }
 
-.blinds-component.mobile {
-	.blinds-items {
-		width: auto;
-	}
+        html.size-large & {
+            display: inline-block;
+        }
 
-	.blinds-item {
-		width: 100% !important;
-		margin: 4px 0;
-
-		p {
-			opacity: 1;
-			position: static;
-			margin: 10px;
-			width: auto !important;
-		}
+        html.size-medium &, html.size-small & {
+            width: auto !important;
+        }
 	}
 }
