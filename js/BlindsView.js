@@ -31,9 +31,6 @@ define([
         },
 
         setupBlinds: function() {
-            if(!this.model.has("_items") || !this.model.get("_items").length) return;
-            this.model.set("_itemCount", this.model.get("_items").length);
-            this.model.set("_active", true);
             this.calculateWidths();
             this.setupEventListeners();
         },
@@ -47,6 +44,10 @@ define([
         },
 
         onMouseEnter: function(e) {
+            if (Adapt.device.screenSize !== "large") {
+                return;
+            }
+
             this.queuedIndex = null;
             var index = $(e.currentTarget).index();
 
@@ -61,12 +62,15 @@ define([
                 }, this), this.ENTER_DELAY)
             }
 
-
             this.model.setItemVisited(index);
             this.model.checkCompletionStatus();
         },
 
-        onMouseLeave: function(e) {
+        onMouseLeave: function() {
+            if (Adapt.device.screenSize !== "large") {
+                return;
+            }
+
             clearTimeout(this.enterTimeout);
             clearTimeout(this.delayedEnterTimeout);
             this.queuedIndex = null;
@@ -76,12 +80,19 @@ define([
         },
 
         onClick: function(e) {
-            if (!Adapt.device.touch) {
+            if (Adapt.device.screenSize === "large") {
                 return;
             }
 
             var index = $(e.currentTarget).index();
-            this.displayCaptions(index, 0);
+            if (index === this.currentItemIndex) {
+                this.hideCaptions();
+            } else {
+                this.currentItemIndex = index;
+                this.displayCaptions(index, 0);
+                this.model.setItemVisited(index);
+                this.model.checkCompletionStatus();
+            }
         },
 
         expandBlind: function(index) {
