@@ -68,11 +68,19 @@ define([
         },
 
         onMouseLeave: function(e) {
+            clearTimeout(this.enterTimeout);
+            clearTimeout(this.delayedEnterTimeout);
+            this.queuedIndex = null;
+            this.isAnimating = false;
             this.hideCaptions();
             this.$(".blinds-item").width(this.itemWidth);
         },
 
         onClick: function(e) {
+            if (!Adapt.device.touch) {
+                return;
+            }
+
             var index = $(e.currentTarget).index();
             this.displayCaptions(index, 0);
         },
@@ -85,7 +93,7 @@ define([
             $siblings.width(this.itemCollapsedWidth);
             this.displayCaptions(index, this.ANIMATION_TIME + this.ENTER_DELAY);
 
-            setTimeout(_.bind(function() {
+            this.delayedEnterTimeout = setTimeout(_.bind(function() {
                 this.isAnimating = false;
                 if (typeof this.queuedIndex === "number") {
                     this.expandBlind(this.queuedIndex);
