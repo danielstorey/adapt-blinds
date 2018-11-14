@@ -48,6 +48,6 @@ The attributes listed below are used in *components.json* to configure **Blinds*
 Viewport sizing
 
 ----------------------------
-**Version number:**  1.0
-**Framework versions:**  2.0
+**Version number:**  2.1.1
+**Framework versions:**  3+
 **Author / maintainer:** Dan Storey
