@@ -62,7 +62,7 @@ define([
                 }, this), this.ENTER_DELAY)
             }
 
-            this.model.setItemVisited(index);
+            this.model.getItem(index).toggleVisited(true);
             this.model.checkCompletionStatus();
         },
 
@@ -90,7 +90,7 @@ define([
             } else {
                 this.currentItemIndex = index;
                 this.displayCaptions(index, 0);
-                this.model.setItemVisited(index);
+                this.model.getItem(index).toggleVisited(true);
                 this.model.checkCompletionStatus();
             }
         },
@@ -116,13 +116,14 @@ define([
             var $blind = this.$getElement(index);
             var $captions = $blind.find(".blinds-caption").show();
             var item = this.model.getItem(index);
+            var captions = item.get("_captions");
             var currTop = 10;
 
             _.each(this.captionQueue, clearTimeout);
 
             _.each($captions, function(el, i) {
                 var t = delay + (i * this.CAPTION_DELAY);
-                var caption = item._captions[i];
+                var caption = captions[i];
                 var left = parseInt(caption.left) || 0;
                 var top = caption.top;
 

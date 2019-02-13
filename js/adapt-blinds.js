@@ -1,12 +1,12 @@
 define([
     "core/js/adapt",
-    "core/js/models/itemModel",
+    "core/js/models/itemsComponentModel",
     "./BlindsView"
-], function(Adapt, ItemModel, BlindsView) {
+], function(Adapt, ItemsComponentModel, BlindsView) {
 
     return Adapt.register("blinds", {
         view: BlindsView,
-        model: ItemModel
+        model: ItemsComponentModel
     });
 
 });
