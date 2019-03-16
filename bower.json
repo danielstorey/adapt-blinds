@@ -2,7 +2,7 @@
     "name": "adapt-blinds",
     "repository": "git://github.com/danielstorey/adapt-blinds.git",
     "framework": ">=3",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "homepage": "https://github.com/danielstorey/adapt-blinds",
     "issues": "https://github.com/danielstorey/adapt-blinds/issues",
     "displayName": "Blinds",
